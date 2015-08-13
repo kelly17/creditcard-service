@@ -25,9 +25,20 @@ public class CreditCard {
 
     private Boolean active;
 
-    @OneToMany(targetEntity=Fee.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
-    //@JsonBackReference
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
     private List<Fee> fees = new LinkedList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
+    private List<Reward> rewards = new LinkedList<>();
+
+    @OneToMany(targetEntity=Benefit.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
+    private List<Benefit> benefits = new LinkedList<>();
+
+    @OneToMany(targetEntity=Promotion.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
+    private List<Promotion> promotions = new LinkedList<>();
+
+    @OneToMany(targetEntity=Criteria.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
+    private List<Criteria> criterias = new LinkedList<>();
 
     public Long getId() {
         return id;
@@ -57,4 +68,19 @@ public class CreditCard {
 
     public void setActive(Boolean active) { this.active = active; }
 
+    public List<Reward> getRewards() { return rewards; }
+
+    public void setRewards(List<Reward> rewards) { this.rewards = rewards; }
+
+    public List<Benefit> getBenefits() { return benefits; }
+
+    public void setBenefits(List<Benefit> benefits) { this.benefits = benefits; }
+
+    public List<Criteria> getCriterias() { return criterias;  }
+
+    public void setCriterias(List<Criteria> criterias) { this.criterias = criterias; }
+
+    public List<Promotion> getPromotions() { return promotions; }
+
+    public void setPromotions(List<Promotion> promotions) { this.promotions = promotions; }
 }

@@ -15,9 +15,11 @@ public class CreditCardPublic {
     private String name;
     private String brand;
 
-    private List<FeePublic> fees;
-    //private JSONObject productInfo;
-
+    private List<Fee> fees;
+    private List<Reward> rewards;
+    private List<Benefit> benefits;
+    private List<Promotion> promotions;
+    private List<Criteria> criterias;
 
     public Long getId() {
         return id;
@@ -51,11 +53,23 @@ public class CreditCardPublic {
         this.brand = brand;
     }
 
-    public List<FeePublic> getFees() {
-        return fees;
-    }
+    public List<Fee> getFees() { return fees; }
 
-    public void setFees(List<FeePublic> fees) {
-        this.fees = fees;
-    }
+    public void setFees(List<Fee> fees) { this.fees = fees; }
+
+    public List<Reward> getRewards() { return rewards;}
+
+    public void setRewards(List<Reward> rewards) { this.rewards = rewards; }
+
+    public List<Benefit> getBenefits() { return benefits; }
+
+    public void setBenefits(List<Benefit> benefits) { this.benefits = benefits; }
+
+    public List<Criteria> getCriterias() { return criterias; }
+
+    public void setCriterias(List<Criteria> criterias) { this.criterias = criterias; }
+
+    public List<Promotion> getPromotions() { return promotions; }
+
+    public void setPromotions(List<Promotion> promotions) { this.promotions = promotions; }
 }

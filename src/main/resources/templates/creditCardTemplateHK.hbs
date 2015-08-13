@@ -1,0 +1,83 @@
+{
+"id"  :"{{this.id}}",
+"locale" : "{{this.locale}}",
+"name" :"{{this.name}}",
+"fees":{
+{{#each this.fees}}
+    "{{this.typeValue}}" :
+     {"value": "{{this.amount}}",
+      "description": "{{this.description}}"
+     },
+{{~/each}}
+},
+"cashBack":{
+{{#each this.rewards}}
+    {{#contains this.typeValue keyword="cashback"}}
+    "{{this.typeValue}}" :
+        {"type": "{{this.typeValue}}",
+        "value": "{{this.value}}",
+        "description": "{{this.description}}"
+        },
+    {{/contains}}
+{{~/each}}
+},
+"airMiles":{
+{{#each this.rewards}}
+    {{#contains this.typeValue keyword="airMiles, times"}}
+        "{{this.typeValue}}" :
+        {"type": "{{this.typeValue}}",
+        "value": "{{this.value}}",
+        "description": "{{this.description}}"
+        },
+    {{/contains}}
+{{~/each}}
+},
+"benefits" : {
+"goodPoints" : [
+{{#each this.benefits}}
+    {{#contains this.typeValue keyword="keyBenefit"}}
+        {{#if description }}
+        "{{description}}",
+        {{/if}}
+    {{/contains}}
+{{~/each}}
+],
+"negativePoints" : [
+{{#each this.benefits}}
+    {{#contains this.typeValue keyword="beAware"}}
+        {{#if description }}
+            "{{description}}",
+        {{/if}}
+    {{/contains}}
+{{~/each}}
+]
+},
+"eligibilities":{
+{{#each this.criterias}}
+    "{{this.typeValue}}" :
+    {"minimum": "{{this.minimum}}",
+    "maximum": "{{this.maximum}}",
+    "description": "{{this.description}}"
+    },
+{{~/each}}
+},
+"promotions":[
+{{#each this.promotions}}
+    {{#isIn typeValue filter="welcomeGift, promoExpiry, proHasOnlineCondition"}}
+        {"type": "{{this.typeValue}}",
+        "value": "{{this.title}}",
+        "description": "{{this.description}}",
+        },
+    {{/isIn}}
+{{~/each}}
+],
+"bestDeals":[
+{{#each this.promotions}}
+    {{#contains typeValue keyword="bestDeals"}}
+        {"{{this.typeValue}}" :
+            "{{description}}"
+        },
+    {{/contains}}
+{{~/each}}
+]
+}

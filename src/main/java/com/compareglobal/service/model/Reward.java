@@ -5,8 +5,8 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "fee")
-public class Fee {
+@Table(name = "reward")
+public class Reward {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,39 +17,37 @@ public class Fee {
     @DecimalMin("0.0")
     @DecimalMax("99999.99")
     @Digits(integer = 5, fraction = 2)
-    private BigDecimal amount;
+    private BigDecimal value;
 
     @Size(max = 1000)
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "type_value")
+    private String typeValue;
 
     @Size(max = 1000)
     @Column(name = "additional_info")
     private String additionalInfo;
 
-    @Column(name = "type_key")
-    private Integer typeKey;
-
-    @Column(name = "type_value")
-    private String typeValue;
-
     @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name="creditcard_id")
     private CreditCard creditcard;
 
-    public Long getId() {
-        return id;
+    public BigDecimal getValue() {
+        return this.value;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public void setValue(BigDecimal value) {
+        this.value = value;
     }
 
-    public String getAdditionalInfo() {
-        return additionalInfo;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getTypeValue() {
@@ -60,5 +58,7 @@ public class Fee {
         this.typeValue = typeValue;
     }
 
-    public Integer getTypeKey() { return typeKey; }
+    public String getAdditional_info() { return additionalInfo; }
+
+    public void setAdditional_info(String additional_info) { this.additionalInfo = additional_info; }
 }

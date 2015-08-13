@@ -1,15 +1,9 @@
 package com.compareglobal.service.transformer;
 
-import com.compareglobal.service.model.CreditCard;
-import com.compareglobal.service.model.CreditCardPublic;
-import com.compareglobal.service.model.Fee;
-import com.compareglobal.service.model.FeePublic;
-
-import java.util.LinkedList;
+import com.compareglobal.service.model.*;
 import java.util.List;
 
 public class CreditCardPublicTransformer {
-
 
     public static CreditCardPublic valueOfDefault(CreditCard creditCard) {
         CreditCardPublic creditCardPublic = new CreditCardPublic();
@@ -17,25 +11,21 @@ public class CreditCardPublicTransformer {
         creditCardPublic.setLocale(creditCard.getLocale());
         creditCardPublic.setName(creditCard.getName());
 
-        List<FeePublic> feeList = new LinkedList<FeePublic>();
-        List<Fee> fees = creditCard.getFees();
-        if (!fees.isEmpty()) {
-            for (Fee fee : fees) {
-                FeePublic feesp =  new FeePublic(fee);
-                feeList.add(feesp);
-            }
-        }
-
+        List<Fee> feeList = creditCard.getFees();
         creditCardPublic.setFees(feeList);
-//        JSONObject productInfo = new JSONObject();
-//        productInfo.put("productImage", LinkUrlHelper.getImageValue(creditCard.getImages(),
-//                ProductKeys.ProductImage.getProductKey()));
-//        productInfo.put("productLink", LinkUrlHelper.getLinkValue(creditCard.getLinks(),
-//                ProductKeys.ProductLink.getProductKey()));
-//        creditCardPublic.setProductInfo(productInfo);
+
+        List<Reward> rewardList = creditCard.getRewards();
+        creditCardPublic.setRewards(rewardList);
+
+        List<Benefit> benefitList = creditCard.getBenefits();
+        creditCardPublic.setBenefits(benefitList);
+
+        List<Promotion> promotionList = creditCard.getPromotions();
+        creditCardPublic.setPromotions(promotionList);
+
+        List<Criteria> criteriaList = creditCard.getCriterias();
+        creditCardPublic.setCriterias(criteriaList);
 
         return creditCardPublic;
-
-
     }
 }

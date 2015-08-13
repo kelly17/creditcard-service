@@ -1,23 +1,16 @@
 package com.compareglobal.service.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.math.BigDecimal;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "fee")
-public class Fee {
+@Table(name = "benefit")
+public class Benefit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    @NotNull
-    @DecimalMin("0.0")
-    @DecimalMax("99999.99")
-    @Digits(integer = 5, fraction = 2)
-    private BigDecimal amount;
 
     @Size(max = 1000)
     private String description;
@@ -25,10 +18,8 @@ public class Fee {
     @Size(max = 1000)
     @Column(name = "additional_info")
     private String additionalInfo;
-
     @Column(name = "type_key")
     private Integer typeKey;
-
     @Column(name = "type_value")
     private String typeValue;
 
@@ -44,21 +35,15 @@ public class Fee {
         return description;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
     public String getAdditionalInfo() {
         return additionalInfo;
+    }
+
+    public Integer getTypeKey() {
+        return typeKey;
     }
 
     public String getTypeValue() {
         return typeValue;
     }
-
-    public void setTypeValue(String typeValue) {
-        this.typeValue = typeValue;
-    }
-
-    public Integer getTypeKey() { return typeKey; }
 }

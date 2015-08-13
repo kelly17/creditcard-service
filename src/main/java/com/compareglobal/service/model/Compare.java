@@ -1,24 +1,37 @@
 package com.compareglobal.service.model;
 
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Compare {
 	private String id;
 	private String locale;
 	private View view;
 	private Filter filter;
-	
+
 	public enum Filter {
-		AIRMILES,
-		CASHBACK,
-		CONTACTLESS,
-		DINING,
-		ONLINESHOPPING,
-		PREMIUM,
-		BESTDEALS,
-        FREE,
-        DISCOUNT,
-        POINTS,
-		FIRSTCARD
+		AIRMILES("hasAirmiles"),
+		CASHBACK("hasCashBack"),
+		CONTACTLESS("hasContactlessPayment"),
+		DINING("hasDining"),
+		ONLINESHOPPING("hasProOnline"),
+		PREMIUM("hasPremium"),
+		PREMIUMSG("premium"),
+		BESTDEALS("hasBestDeal"),
+        FREE("hasFree"),
+        DISCOUNT("hasDiscount"),
+        POINTS("hasPoints"),
+		FIRSTCARD("has1stcard");
+
+		private final String value;
+
+		Filter(String value) {
+			this.value = value;
+		}
+
+		public String getValue() {
+			return value;
+		}
 	}
 
 	public enum View {
@@ -55,6 +68,13 @@ public class Compare {
 
 	public void setView(View view) {
 		this.view = view;
+	}
+
+	public String getCountrySuffix() {
+		if (StringUtils.isNotBlank(locale)) {
+			return locale.substring(3);
+		}
+		return "";
 	}
 
 	@Override
