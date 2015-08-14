@@ -1,7 +1,7 @@
-Creditcard with Guice and JPA
+Creditcard using Dropwizard-Guice-JPA-Handlebars
 =====================================
 
-Creditcard application using Guice and JPA (Dropwizard)
+Creditcard application using Guice and JPA (Dropwizard) with handlebars
 
 Requirements
 ------------
