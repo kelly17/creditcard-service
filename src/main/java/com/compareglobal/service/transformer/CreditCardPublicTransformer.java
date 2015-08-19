@@ -26,6 +26,9 @@ public class CreditCardPublicTransformer {
         List<Criteria> criteriaList = creditCard.getCriterias();
         creditCardPublic.setCriterias(criteriaList);
 
+        List<GeneralInfo> generalList = creditCard.getGeneralInfos();
+        creditCardPublic.setGeneralInfos(generalList);
+
         return creditCardPublic;
     }
 }

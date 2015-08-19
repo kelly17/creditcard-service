@@ -79,5 +79,13 @@
         },
     {{/contains}}
 {{~/each}}
-]
+],
+"generalInfo":{
+{{#each this.generalInfos}}
+    "{{this.typeValue}}" :
+     {"value": "{{this.title}}",
+      "description": "{{this.description}}"
+     },
+{{~/each}}
+}
 }

@@ -20,6 +20,7 @@ public class CreditCardPublic {
     private List<Benefit> benefits;
     private List<Promotion> promotions;
     private List<Criteria> criterias;
+    private List<GeneralInfo> generalInfos;
 
     public Long getId() {
         return id;
@@ -72,4 +73,8 @@ public class CreditCardPublic {
     public List<Promotion> getPromotions() { return promotions; }
 
     public void setPromotions(List<Promotion> promotions) { this.promotions = promotions; }
+
+    public List<GeneralInfo> getGeneralInfos() { return generalInfos; }
+
+    public void setGeneralInfos(List<GeneralInfo> generalInfos) { this.generalInfos = generalInfos; }
 }

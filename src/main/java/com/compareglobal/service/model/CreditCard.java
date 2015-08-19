@@ -40,9 +40,10 @@ public class CreditCard {
     @OneToMany(targetEntity=Criteria.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
     private List<Criteria> criterias = new LinkedList<>();
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(targetEntity=GeneralInfo.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "creditcard")
+    private List<GeneralInfo> generalInfos = new LinkedList<>();
+
+    public Long getId() { return id; }
 
     public String getLocale() {
         return locale;
@@ -83,4 +84,8 @@ public class CreditCard {
     public List<Promotion> getPromotions() { return promotions; }
 
     public void setPromotions(List<Promotion> promotions) { this.promotions = promotions; }
+
+    public List<GeneralInfo> getGeneralInfos() { return generalInfos; }
+
+    public void setGeneralInfos(List<GeneralInfo> generalInfos) { this.generalInfos = generalInfos; }
 }
